@@ -1,0 +1,74 @@
+{
+  "items": [
+    {
+      "name": "Jami Perry",
+      "account": "@kelley3",
+      "verified": true,
+      "image": "assets/avatars/avataaar1.png",
+      "message": "Duis laboris exercitation aliqua ad et consequat officia consectetur eu.",
+      "media": null,
+      "rechweet": 137,
+      "fav": 4664
+    },
+    {
+      "name": "Sue Dudley",
+      "account": "@henry28",
+      "verified": true,
+      "image": "assets/avatars/avataaar2.png",
+      "message": "Enim commodo id laborum sint cupidatat reprehenderit culpa.",
+      "media": "http://apeps.kpi.ua/images/banner_Jump%20into%20life.jpg",
+      "rechweet": 442,
+      "fav": 3075
+    },
+    {
+      "name": "Fitzpatrick Christensen",
+      "account": "@prince21",
+      "verified": true,
+      "image": "assets/avatars/avataaar3.png",
+      "message": "Adipisicing occaecat ad in incididunt irure enim ut.",
+      "media": "http://apeps.kpi.ua/images/target2020_ukrtelecom.png",
+      "rechweet": 133,
+      "fav": 1447
+    },
+    {
+      "name": "Erica Kidd",
+      "account": "@elise3",
+      "verified": false,
+      "image": "assets/avatars/avataaar4.png",
+      "message": "Ex est eiusmod ea eu deserunt.",
+      "media": null,
+      "rechweet": 535,
+      "fav": 4493
+    },
+    {
+      "name": "Shauna Robertson",
+      "account": "@velez81",
+      "verified": true,
+      "image": "assets/avatars/avataaar5.png",
+      "message": "Duis exercitation sunt id magna voluptate nostrud irure esse ex sint ullamco consectetur ut.",
+      "media": null,
+      "rechweet": 463,
+      "fav": 1363
+    },
+    {
+      "name": "Lawson Alvarado",
+      "account": "@sonia31",
+      "verified": true,
+      "image": "assets/avatars/avataaar6.png",
+      "message": "Minim irure ex do velit reprehenderit laboris.",
+      "media": "https://scontent.fiev12-1.fna.fbcdn.net/v/t1.0-9/124583260_1067104360416175_336707195447451542_o.jpg?_nc_cat=109&ccb=2&_nc_sid=730e14&_nc_ohc=I7vxEeZC6fgAX9T9EgZ&_nc_ht=scontent.fiev12-1.fna&oh=285615bc5a824d32727205a12028c87d&oe=5FD6C172",
+      "rechweet": 702,
+      "fav": 4366
+    },
+    {
+      "name": "Winifred Lewis",
+      "account": "@tricia86",
+      "verified": false,
+      "image": "assets/avatars/avataaar7.png",
+      "message": "Pariatur exercitation anim commodo reprehenderit pariatur fugiat id fugiat magna exercitation minim.",
+      "media": null,
+      "rechweet": 327,
+      "fav": 710
+    }
+  ]
+}
