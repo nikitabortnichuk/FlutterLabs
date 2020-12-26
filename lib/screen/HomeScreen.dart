@@ -1,13 +1,26 @@
 import 'package:chwitter/component/Chweets.dart';
 import 'package:chwitter/component/ChwitterDrawer.dart';
-import 'package:chwitter/component/Messages.dart';
+import 'package:chwitter/component/Likes.dart';
 import 'package:chwitter/component/Notifications.dart';
 import 'package:chwitter/component/Search.dart';
+import 'package:chwitter/di/DI.dart';
+import 'package:chwitter/model/Chweet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
+  final List<Chweet> chweets;
+  final List<Chweet> likedChweets;
+  final Function addToLiked;
+  final Function removeFromLiked;
+
+  HomeScreen(
+      {@required this.chweets,
+      @required this.likedChweets,
+      @required this.addToLiked,
+      @required this.removeFromLiked});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -52,13 +65,26 @@ class _HomeScreenState extends State<HomeScreen> {
               width: 24,
               height: 24,
             ),
-            onPressed:() {return null;},
+            onPressed: () {
+              return null;
+            },
           )
         ],
       ),
       drawer: ChwitterDrawer(),
       body: PageView(
-        children: [Chweets(), Search(), Notifications(), Messages()],
+        children: [
+          Chweets(
+              chweets: widget.chweets,
+              addToLiked: widget.addToLiked,
+              removeFromLiked: widget.removeFromLiked),
+          Search(),
+          Notifications(),
+          Likes(
+              likedChweets: widget.likedChweets,
+              addToLiked: widget.addToLiked,
+              removeFromLiked: widget.removeFromLiked)
+        ],
         onPageChanged: onPageChanged,
         controller: _pageController,
       ),
@@ -99,8 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 _currentScreen == 3
-                    ? "assets/icons/message_colored.svg"
-                    : "assets/icons/message.svg",
+                    ? "assets/icons/like_colored.svg"
+                    : "assets/icons/like.svg",
                 width: 24,
                 height: 24,
               ),

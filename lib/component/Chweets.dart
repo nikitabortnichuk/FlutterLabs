@@ -1,38 +1,28 @@
-
 import 'package:chwitter/component/ChweetWidget.dart';
-import 'package:chwitter/di/DI.dart';
 import 'package:chwitter/model/Chweet.dart';
 import 'package:flutter/widgets.dart';
 
-class Chweets extends StatefulWidget {
-  @override
-  _ChweetsState createState() => _ChweetsState();
-}
+class Chweets extends StatelessWidget {
+  final List<Chweet> chweets;
+  final Function addToLiked;
+  final Function removeFromLiked;
 
-class _ChweetsState extends State<Chweets> {
-
-  List<Chweet> _chweets = [];
-
-  @override
-  void initState() {
-    _getTweets();
-    super.initState();
-  }
+  Chweets(
+      {@required this.chweets,
+      @required this.addToLiked,
+      @required this.removeFromLiked});
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: _chweets.length,
+      itemCount: chweets.length,
       itemBuilder: (context, index) {
-        return ChweetWidget(chweet: _chweets[index]);
+        return ChweetWidget(
+          chweet: chweets[index],
+          addToLiked: addToLiked,
+          removeFromLiked: removeFromLiked,
+        );
       },
     );
-  }
-
-  void _getTweets() async {
-    var response = await DI.remoteDataSource.getChweets();
-    setState(() {
-      _chweets = response;
-    });
   }
 }

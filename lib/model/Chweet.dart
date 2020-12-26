@@ -7,6 +7,7 @@ class Chweet {
   String _media;
   int _rechweet;
   int _fav;
+  bool _isLiked = false;
 
   String get name => _name;
   String get account => _account;
@@ -16,6 +17,15 @@ class Chweet {
   String get media => _media;
   int get rechweet => _rechweet;
   int get fav => _fav;
+  bool get isLiked => _isLiked;
+
+  set fav(int value) {
+    _fav = value;
+  }
+
+  set isLiked(bool value) {
+    _isLiked = value;
+  }
 
   Chweet({
     String name,

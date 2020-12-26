@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _fakeLoad() async {
     await Future.delayed(Duration(seconds: 2));
-    var route = MaterialPageRoute(builder: (context) => HomeScreen());
-    Navigator.of(context).pushAndRemoveUntil(route, (route) => false);
+    // var route = MaterialPageRoute(builder: (context) => HomeScreen());
+    // Navigator.of(context).pushAndRemoveUntil(route, (route) => false);
   }
 }

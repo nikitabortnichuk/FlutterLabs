@@ -32,7 +32,7 @@ class ChwitterDrawer extends StatelessWidget {
             ),
             DrawerItem(
               icon: "assets/icons/bookmark.svg",
-              label: "Saved elements",
+              label: "Liked chweets",
             ),
             DrawerItem(
               icon: "assets/icons/lighting.svg",
