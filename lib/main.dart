@@ -1,57 +1,52 @@
+import 'package:chwitter/model/ChweetListModel.dart';
+import 'package:chwitter/model/LikedChweetListModel.dart';
 import 'package:chwitter/screen/HomeScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'di/DI.dart';
-import 'model/Chweet.dart';
+import 'model/ChweetModel.dart';
 
 void main() {
   runApp(ChwitterApp());
 }
 
-class ChwitterApp extends StatefulWidget {
-  @override
-  _ChwitterAppState createState() => _ChwitterAppState();
-}
+class ChwitterApp extends StatelessWidget {
 
-class _ChwitterAppState extends State<ChwitterApp> {
-  List<Chweet> _chweets = [];
-  List<Chweet> _likedChweets = [];
+  ChweetListModel _chweetListModel;
 
-  @override
-  void initState() {
+  ChwitterApp() {
     _getChweets();
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: HomeScreen(
-        chweets: _chweets,
-        likedChweets: _likedChweets,
-        addToLiked: addToLiked,
-        removeFromLiked: removeFromLiked,
+
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => ChweetModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => _chweetListModel,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LikedChweetListModel(),
+        )
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: HomeScreen(),
       ),
     );
   }
 
   void _getChweets() async {
     var response = await DI.remoteDataSource.getChweets();
-    setState(() {
-      _chweets = response;
-    });
-  }
-
-  void addToLiked(Chweet chweet) {
-    _likedChweets.add(chweet);
-  }
-
-  void removeFromLiked(Chweet chweet) {
-    _likedChweets.remove(chweet);
+    _chweetListModel = ChweetListModel(items: response);
   }
 }

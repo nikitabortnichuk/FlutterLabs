@@ -1,16 +1,12 @@
 import 'package:chwitter/component/ChweetWidget.dart';
-import 'package:chwitter/model/Chweet.dart';
+import 'package:chwitter/model/ChweetListModel.dart';
+import 'package:chwitter/model/ChweetModel.dart';
+import 'package:chwitter/remote/ChwitterRemoteDataSource.dart';
 import 'package:flutter/widgets.dart';
 
 class Chweets extends StatelessWidget {
-  final List<Chweet> chweets;
-  final Function addToLiked;
-  final Function removeFromLiked;
 
-  Chweets(
-      {@required this.chweets,
-      @required this.addToLiked,
-      @required this.removeFromLiked});
+  ChweetListModel _chweetListModel;
 
   @override
   Widget build(BuildContext context) {
@@ -25,4 +21,10 @@ class Chweets extends StatelessWidget {
       },
     );
   }
+
+  ChweetListModel getChweets() {
+    Future<List<ChweetModel>> chweetItemList = ChwitterRemoteDataSource().getChweets();
+    return ChweetListModel(items: chweetItemList);
+  }
+
 }

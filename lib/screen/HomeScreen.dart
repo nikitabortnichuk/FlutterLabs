@@ -4,22 +4,12 @@ import 'package:chwitter/component/Likes.dart';
 import 'package:chwitter/component/Notifications.dart';
 import 'package:chwitter/component/Search.dart';
 import 'package:chwitter/di/DI.dart';
-import 'package:chwitter/model/Chweet.dart';
+import 'package:chwitter/model/ChweetModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
-  final List<Chweet> chweets;
-  final List<Chweet> likedChweets;
-  final Function addToLiked;
-  final Function removeFromLiked;
-
-  HomeScreen(
-      {@required this.chweets,
-      @required this.likedChweets,
-      @required this.addToLiked,
-      @required this.removeFromLiked});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -74,16 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: ChwitterDrawer(),
       body: PageView(
         children: [
-          Chweets(
-              chweets: widget.chweets,
-              addToLiked: widget.addToLiked,
-              removeFromLiked: widget.removeFromLiked),
+          Chweets(),
           Search(),
           Notifications(),
-          Likes(
-              likedChweets: widget.likedChweets,
-              addToLiked: widget.addToLiked,
-              removeFromLiked: widget.removeFromLiked)
+          Likes()
         ],
         onPageChanged: onPageChanged,
         controller: _pageController,

@@ -1,4 +1,7 @@
-class Chweet {
+
+import 'package:flutter/foundation.dart';
+
+class ChweetModel extends ChangeNotifier{
   String _name;
   String _account;
   bool _verified;
@@ -21,13 +24,15 @@ class Chweet {
 
   set fav(int value) {
     _fav = value;
+    notifyListeners();
   }
 
   set isLiked(bool value) {
     _isLiked = value;
+    notifyListeners();
   }
 
-  Chweet({
+  ChweetModel({
     String name,
     String account,
     bool verified,
@@ -46,7 +51,7 @@ class Chweet {
     _fav = fav;
   }
 
-  Chweet.fromJson(dynamic json) {
+  ChweetModel.fromJson(dynamic json) {
     _name = json["name"];
     _account = json["account"];
     _verified = json["verified"];

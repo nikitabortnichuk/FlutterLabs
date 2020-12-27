@@ -1,9 +1,9 @@
-import 'package:chwitter/model/Chweet.dart';
+import 'package:chwitter/model/ChweetModel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:chwitter/component/ChweetWidget.dart';
 
 class Likes extends StatefulWidget {
-  final List<Chweet> likedChweets;
+  final List<ChweetModel> likedChweets;
   final Function addToLiked;
   final Function removeFromLiked;
 
@@ -37,7 +37,7 @@ class _LikesState extends State<Likes> {
     );
   }
 
-  _removeFromLiked(Chweet chweet) {
+  _removeFromLiked(ChweetModel chweet) {
     setState(() {
       widget.removeFromLiked(chweet);
     });

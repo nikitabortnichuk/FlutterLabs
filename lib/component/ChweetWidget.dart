@@ -1,11 +1,11 @@
-import 'package:chwitter/model/Chweet.dart';
+import 'package:chwitter/model/ChweetModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ChweetWidget extends StatefulWidget {
-  final Chweet chweet;
+  final ChweetModel chweet;
   final Function addToLiked;
   final Function removeFromLiked;
 
