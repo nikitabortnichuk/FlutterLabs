@@ -3,11 +3,11 @@ import 'package:chwitter/component/ChwitterDrawer.dart';
 import 'package:chwitter/component/Likes.dart';
 import 'package:chwitter/component/Notifications.dart';
 import 'package:chwitter/component/Search.dart';
-import 'package:chwitter/di/DI.dart';
-import 'package:chwitter/model/ChweetModel.dart';
+import 'package:chwitter/model/ChweetListModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
 
@@ -23,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: _currentScreen);
+    final chweetsListModel = Provider.of<ChweetListModel>(context, listen: false);
+    chweetsListModel.getData();
   }
 
   @override
@@ -142,4 +144,5 @@ class _HomeScreenState extends State<HomeScreen> {
   void onTabTapped(int index) {
     _pageController.jumpToPage(index);
   }
+
 }

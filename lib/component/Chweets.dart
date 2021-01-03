@@ -1,30 +1,28 @@
 import 'package:chwitter/component/ChweetWidget.dart';
+import 'package:chwitter/di/DI.dart';
 import 'package:chwitter/model/ChweetListModel.dart';
-import 'package:chwitter/model/ChweetModel.dart';
-import 'package:chwitter/remote/ChwitterRemoteDataSource.dart';
 import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 
-class Chweets extends StatelessWidget {
+class Chweets extends StatefulWidget {
+  @override
+  _ChweetsState createState() => _ChweetsState();
+}
 
-  ChweetListModel _chweetListModel;
+class _ChweetsState extends State<Chweets> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: chweets.length,
-      itemBuilder: (context, index) {
-        return ChweetWidget(
-          chweet: chweets[index],
-          addToLiked: addToLiked,
-          removeFromLiked: removeFromLiked,
-        );
-      },
+    return Consumer<ChweetListModel>(
+        builder: (context, model, _) => ListView.builder(
+            itemCount: model.items.length,
+            itemBuilder: (context, index) =>
+                ChweetWidget(chweet: model.getById(index))
+        )
     );
   }
-
-  ChweetListModel getChweets() {
-    Future<List<ChweetModel>> chweetItemList = ChwitterRemoteDataSource().getChweets();
-    return ChweetListModel(items: chweetItemList);
-  }
-
 }

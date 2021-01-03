@@ -1,7 +1,7 @@
 
-import 'package:flutter/foundation.dart';
+import 'package:flutter/cupertino.dart';
 
-class ChweetModel extends ChangeNotifier{
+class Chweet extends ChangeNotifier{
   String _name;
   String _account;
   bool _verified;
@@ -32,7 +32,7 @@ class ChweetModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  ChweetModel({
+  Chweet({
     String name,
     String account,
     bool verified,
@@ -51,7 +51,7 @@ class ChweetModel extends ChangeNotifier{
     _fav = fav;
   }
 
-  ChweetModel.fromJson(dynamic json) {
+  Chweet.fromJson(dynamic json) {
     _name = json["name"];
     _account = json["account"];
     _verified = json["verified"];

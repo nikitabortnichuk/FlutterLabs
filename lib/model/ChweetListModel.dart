@@ -1,23 +1,33 @@
-import 'package:chwitter/model/ChweetModel.dart';
+import 'package:chwitter/di/DI.dart';
+import 'package:chwitter/model/Chweet.dart';
 import 'package:flutter/foundation.dart';
 
-class ChweetListModel extends ChangeNotifier{
-  List<ChweetModel> _items;
+class ChweetListModel extends ChangeNotifier {
+  List<Chweet> _items;
 
-  List<ChweetModel> get items => _items;
-
-  ChweetListModel({
-      List<ChweetModel> items}){
-    _items = items;
+  ChweetListModel() {
+    _items = [];
   }
 
   ChweetListModel.fromJson(dynamic json) {
     if (json["items"] != null) {
       _items = [];
       json["items"].forEach((v) {
-        _items.add(ChweetModel.fromJson(v));
+        _items.add(Chweet.fromJson(v));
       });
     }
+  }
+
+  List<Chweet> get items => _items;
+
+  set items(value) {
+    items = value;
+    notifyListeners();
+  }
+
+  getData() async {
+    _items = await DI.remoteDataSource.getChweets();
+    notifyListeners();
   }
 
   Map<String, dynamic> toJson() {
@@ -28,4 +38,7 @@ class ChweetListModel extends ChangeNotifier{
     return map;
   }
 
+  Chweet getById(int id) {
+    return items[id];
+  }
 }

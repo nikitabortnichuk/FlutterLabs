@@ -1,3 +1,4 @@
+import 'package:chwitter/model/Chweet.dart';
 import 'package:chwitter/model/ChweetListModel.dart';
 import 'package:chwitter/model/LikedChweetListModel.dart';
 import 'package:chwitter/screen/HomeScreen.dart';
@@ -5,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'di/DI.dart';
-import 'model/ChweetModel.dart';
 
 void main() {
   runApp(ChwitterApp());
@@ -13,22 +13,16 @@ void main() {
 
 class ChwitterApp extends StatelessWidget {
 
-  ChweetListModel _chweetListModel;
-
-  ChwitterApp() {
-    _getChweets();
-  }
-
   @override
   Widget build(BuildContext context) {
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ChweetModel(),
+          create: (context) => Chweet(),
         ),
         ChangeNotifierProvider(
-          create: (context) => _chweetListModel,
+          create: (context) => ChweetListModel(),
         ),
         ChangeNotifierProvider(
           create: (context) => LikedChweetListModel(),
@@ -43,10 +37,5 @@ class ChwitterApp extends StatelessWidget {
         home: HomeScreen(),
       ),
     );
-  }
-
-  void _getChweets() async {
-    var response = await DI.remoteDataSource.getChweets();
-    _chweetListModel = ChweetListModel(items: response);
   }
 }

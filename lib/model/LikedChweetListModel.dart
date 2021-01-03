@@ -1,19 +1,18 @@
-
-import 'package:chwitter/model/ChweetModel.dart';
+import 'package:chwitter/model/Chweet.dart';
 import 'package:flutter/foundation.dart';
 
-class LikedChweetListModel extends ChangeNotifier{
-  final List<ChweetModel> items;
+class LikedChweetListModel extends ChangeNotifier {
+  final List<Chweet> items = [];
 
-  LikedChweetListModel({this.items});
-
-  void addToLiked(ChweetModel item) {
+  void addToLiked(Chweet item) {
     items.add(item);
     notifyListeners();
   }
 
-  void removeFromLiked(ChweetModel item) {
-    items.add(item);
+  void removeFromLiked(Chweet item) {
+    if (item != null) {
+      items.remove(item);
+    }
     notifyListeners();
   }
 
