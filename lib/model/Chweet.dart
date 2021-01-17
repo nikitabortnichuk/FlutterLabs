@@ -1,5 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Chweet extends ChangeNotifier{
   String _name;
@@ -11,8 +12,11 @@ class Chweet extends ChangeNotifier{
   int _rechweet;
   int _fav;
   bool _isLiked = false;
+  Color _textStyle = Colors.black;
+
 
   String get name => _name;
+
   String get account => _account;
   bool get verified => _verified;
   String get image => _image;
@@ -21,6 +25,7 @@ class Chweet extends ChangeNotifier{
   int get rechweet => _rechweet;
   int get fav => _fav;
   bool get isLiked => _isLiked;
+  Color get textStyle => _textStyle;
 
   set fav(int value) {
     _fav = value;
@@ -32,6 +37,11 @@ class Chweet extends ChangeNotifier{
     notifyListeners();
   }
 
+  set textStyle(Color value) {
+    _textStyle = value;
+    notifyListeners();
+  }
+
   Chweet({
     String name,
     String account,
@@ -40,7 +50,8 @@ class Chweet extends ChangeNotifier{
     String message,
     String media,
     int rechweet,
-    int fav}){
+    int fav,
+    textStyle}){
     _name = name;
     _account = account;
     _verified = verified;
@@ -49,6 +60,7 @@ class Chweet extends ChangeNotifier{
     _media = media;
     _rechweet = rechweet;
     _fav = fav;
+    _textStyle = textStyle;
   }
 
   Chweet.fromJson(dynamic json) {

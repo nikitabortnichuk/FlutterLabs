@@ -1,24 +1,24 @@
 import 'package:chwitter/di/DI.dart';
-import 'package:chwitter/model/Chweet.dart';
+import 'package:chwitter/model/Movie.dart';
 import 'package:flutter/foundation.dart';
 
-class ChweetListModel extends ChangeNotifier {
-  List<Chweet> _items;
+class MovieListModel extends ChangeNotifier {
+  List<Movie> _items;
 
-  ChweetListModel() {
+  MovieListModel() {
     _items = [];
   }
 
-  ChweetListModel.fromJson(dynamic json) {
-    if (json["items"] != null) {
+  MovieListModel.fromJson(dynamic json) {
+    if (json["results"] != null) {
       _items = [];
-      json["items"].forEach((v) {
-        _items.add(Chweet.fromJson(v));
+      json["results"].forEach((v) {
+        _items.add(Movie.fromJson(v));
       });
     }
   }
 
-  List<Chweet> get items => _items;
+  List<Movie> get items => _items;
 
   set items(value) {
     items = value;
@@ -33,12 +33,12 @@ class ChweetListModel extends ChangeNotifier {
     return map;
   }
 
-  Chweet getById(int id) {
+  Movie getById(int id) {
     return items[id];
   }
 
   getData() async {
-    _items = await DI.chweetRemoteDataSource.getItems();
+    _items = await DI.movieRemoteDataSource.getItems();
     notifyListeners();
   }
 }

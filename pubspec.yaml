@@ -25,6 +25,8 @@ dependencies:
     sdk: flutter
   flutter_svg: ^0.18.0
   flutter_html: ^0.8.2
+  shared_preferences: 0.5.12+4
+  http: ^0.12.2
   provider: ^3.0.0
 
 

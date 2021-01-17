@@ -2,7 +2,6 @@ import 'package:chwitter/model/Chweet.dart';
 import 'package:chwitter/model/LikedChweetListModel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -16,6 +15,7 @@ class ChweetWidget extends StatefulWidget {
 }
 
 class _ChweetWidgetState extends State<ChweetWidget> {
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,7 +52,7 @@ class _ChweetWidgetState extends State<ChweetWidget> {
                         )
                       ],
                     ),
-                    Html(data: widget.chweet.message),
+                    Text(widget.chweet.message, style: TextStyle(color: widget.chweet.textStyle)),
                     if (widget.chweet.media != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 8, right: 8),

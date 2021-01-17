@@ -1,9 +1,12 @@
 import 'package:chwitter/component/Chweets.dart';
 import 'package:chwitter/component/ChwitterDrawer.dart';
 import 'package:chwitter/component/Likes.dart';
+import 'package:chwitter/component/Movies.dart';
 import 'package:chwitter/component/Notifications.dart';
 import 'package:chwitter/component/Search.dart';
 import 'package:chwitter/model/ChweetListModel.dart';
+import 'package:chwitter/model/MovieListModel.dart';
+import 'package:chwitter/model/ThemePreference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -25,6 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController = PageController(initialPage: _currentScreen);
     final chweetsListModel = Provider.of<ChweetListModel>(context, listen: false);
     chweetsListModel.getData();
+    // final moviesListModel = Provider.of<MovieListModel>(context, listen: false);
+    // moviesListModel.getData();
   }
 
   @override
@@ -35,10 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeChange = Provider.of<ThemePreference>(context);
     return Scaffold(
       appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
         elevation: 1,
         title: SvgPicture.asset(
           "assets/icons/logo_colored.svg",
@@ -51,15 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         actions: [
-          IconButton(
-            icon: SvgPicture.asset(
-              "assets/icons/menu.svg",
-              width: 24,
-              height: 24,
-            ),
-            onPressed: () {
-              return null;
+          Switch(
+            value: themeChange.value,
+            onChanged: (bool value) {
+              themeChange.value = value;
             },
+            activeColor: Color(0xFF1744).withOpacity(1.0),
           )
         ],
       ),
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           Chweets(),
           Search(),
-          Notifications(),
+          Movies(),
           Likes()
         ],
         onPageChanged: onPageChanged,
