@@ -1,11 +1,9 @@
+import 'package:chwitter/component/AnimationDiagram.dart';
 import 'package:chwitter/component/Chweets.dart';
 import 'package:chwitter/component/ChwitterDrawer.dart';
 import 'package:chwitter/component/Likes.dart';
 import 'package:chwitter/component/Movies.dart';
-import 'package:chwitter/component/Notifications.dart';
-import 'package:chwitter/component/Search.dart';
 import 'package:chwitter/model/ChweetListModel.dart';
-import 'package:chwitter/model/MovieListModel.dart';
 import 'package:chwitter/model/ThemePreference.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -28,8 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
     _pageController = PageController(initialPage: _currentScreen);
     final chweetsListModel = Provider.of<ChweetListModel>(context, listen: false);
     chweetsListModel.getData();
-    // final moviesListModel = Provider.of<MovieListModel>(context, listen: false);
-    // moviesListModel.getData();
   }
 
   @override
@@ -68,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: PageView(
         children: [
           Chweets(),
-          Search(),
+          AnimationDiagram(),
           Movies(),
           Likes()
         ],

@@ -1,8 +1,7 @@
-import 'package:chwitter/model/Chweet.dart';
-import 'package:chwitter/screen/ChweetDetailsScreen.dart';
 import 'package:chwitter/component/ChweetWidget.dart';
-import 'package:chwitter/di/DI.dart';
+import 'package:chwitter/model/Chweet.dart';
 import 'package:chwitter/model/ChweetListModel.dart';
+import 'package:chwitter/screen/ChweetDetailsScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
